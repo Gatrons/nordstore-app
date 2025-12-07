@@ -1,65 +1,208 @@
-import Image from "next/image";
+// app/page.tsx
+import Link from "next/link";
 
-export default function Home() {
+const featuredProducts = [
+  {
+    name: "Spotify Premium",
+    type: "SPOTIFY",
+    description: "Akses musik tanpa iklan, skip tanpa batas, dan kualitas tinggi.",
+    badge: "Best seller",
+    priceFrom: 15000,
+  },
+  {
+    name: "Netflix Premium",
+    type: "NETFLIX",
+    description: "Tonton film & series Full HD di banyak device.",
+    badge: "Popular",
+    priceFrom: 30000,
+  },
+  {
+    name: "Discord Nitro",
+    type: "DISCORD",
+    description: "Badge Nitro, upload besar, dan emoji custom di semua server.",
+    badge: "Gamers",
+    priceFrom: 25000,
+  },
+  {
+    name: "Rockstar Account",
+    type: "ROCKSTAR",
+    description: "Account original untuk game favoritmu di Rockstar Launcher.",
+    badge: "Limited",
+    priceFrom: 15000,
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="space-y-16">
+      {/* HERO */}
+      <section className="grid gap-10 md:grid-cols-[1.4fr,1fr] md:items-center">
+        <div className="space-y-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/40 bg-purple-900/20 px-3 py-1 text-[11px] font-medium text-purple-200 shadow-sm shadow-purple-900/40">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span>Instant delivery • Trusted seller • Discord Login</span>
+          </div>
+
+          <div className="space-y-3">
+            <h1 className="text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              Semua kebutuhan digitalmu,
+              <span className="block bg-gradient-to-r from-purple-400 via-purple-200 to-purple-500 bg-clip-text text-transparent">
+                dalam satu store yang aman.
+              </span>
+            </h1>
+            <p className="max-w-xl text-sm text-slate-300 sm:text-base">
+              Top up langganan Spotify, Netflix, Discord Nitro, dan banyak lagi.
+              Pembayaran fleksibel, pengiriman cepat, dan riwayat pesanan rapi
+              di dashboard-mu.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="#products"
+              className="rounded-full bg-gradient-to-r from-purple-500 to-purple-700 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-900/50 hover:brightness-110"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Mulai belanja
+            </Link>
+            <Link
+              href="https://discord.com"
+              target="_blank"
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-medium text-slate-200 hover:bg-white/10"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              Join Discord komunitas
+            </Link>
+            <p className="w-full text-xs text-slate-400 sm:w-auto">
+              Login cepat dengan Discord, tanpa ribet bikin akun baru.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      {/* PRODUCTS */}
+      <section id="products" className="space-y-6">
+        <div className="flex items-end justify-between gap-3">
+          <div>
+            <h2 className="text-xl font-semibold text-white sm:text-2xl">
+              Produk pilihan
+            </h2>
+            <p className="text-sm text-slate-400">
+              Kategori yang paling sering dibeli di NordStore.
+            </p>
+          </div>
+          <Link
+            href="/products"
+            className="text-xs font-medium text-purple-300 hover:text-purple-100"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Lihat semua →
+          </Link>
         </div>
-      </main>
+
+        <div className="grid gap-4 md:grid-cols-4">
+          {featuredProducts.map((product) => (
+            <div
+              key={product.name}
+              className="group flex flex-col justify-between rounded-xl border border-white/5 bg-white/5 p-4 transition hover:border-purple-400/70 hover:bg-purple-900/20"
+            >
+              <div className="space-y-1.5">
+                <p className="text-[11px] uppercase tracking-wide text-purple-300/80">
+                  {product.type}
+                </p>
+                <h3 className="text-sm font-semibold text-white">
+                  {product.name}
+                </h3>
+                <p className="text-xs text-slate-400">
+                  {product.description}
+                </p>
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <p className="text-xs text-slate-300">
+                  Mulai dari{" "}
+                  <span className="font-semibold text-purple-200">
+                    Rp {product.priceFrom.toLocaleString("id-ID")}
+                  </span>
+                </p>
+                <button className="rounded-full bg-purple-600/80 px-3 py-1 text-[11px] font-semibold text-white shadow-sm shadow-purple-900/60 group-hover:bg-purple-500">
+                  Pilih paket
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="how-it-works" className="space-y-6">
+        <h2 className="text-xl font-semibold text-white sm:text-2xl">
+          Cara kerja NordStore
+        </h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          <StepCard
+            step="01"
+            title="Login dengan Discord"
+            description="Gunakan akun Discord-mu untuk login hanya dengan satu klik. Tidak perlu registrasi baru."
+          />
+          <StepCard
+            step="02"
+            title="Pilih produk & paket"
+            description="Pilih layanan yang kamu mau: Spotify, Netflix, Nitro, atau lainnya, lalu pilih durasi paket."
+          />
+          <StepCard
+            step="03"
+            title="Bayar & terima dalam hitungan menit"
+            description="Setelah pembayaran terverifikasi, pesananmu diproses otomatis dan dikirim ke dashboard / email."
+          />
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="space-y-5">
+        <h2 className="text-xl font-semibold text-white sm:text-2xl">
+          FAQ singkat
+        </h2>
+        <div className="space-y-3 text-sm text-slate-300">
+          <FaqItem
+            question="Apakah ini aman dan legal?"
+            answer="Kami hanya menyediakan akun dan layanan dari sumber terpercaya. Tidak ada data sensitif yang kami minta dari kamu selain yang dibutuhkan untuk memproses pesanan."
+          />
+          <FaqItem
+            question="Berapa lama pesanan diproses?"
+            answer="Rata-rata 1–5 menit setelah pembayaran terverifikasi. Untuk kondisi tertentu bisa sedikit lebih lama, tapi kamu bisa memantau status di dashboard."
+          />
+          <FaqItem
+            question="Metode pembayaran apa saja yang tersedia?"
+            answer="Kamu bisa menggunakan berbagai metode pembayaran lokal (e-wallet / bank transfer) sesuai integrasi yang kami sediakan di halaman checkout."
+          />
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function StepCard({
+  step,
+  title,
+  description,
+}: {
+  step: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="rounded-xl border border-white/5 bg-white/5 p-4">
+      <p className="text-[11px] font-semibold tracking-[0.2em] text-purple-300">
+        {step}
+      </p>
+      <h3 className="mt-2 text-sm font-semibold text-white">{title}</h3>
+      <p className="mt-1 text-xs text-slate-300">{description}</p>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  return (
+    <div className="rounded-xl border border-white/5 bg-white/5 p-4">
+      <p className="text-sm font-semibold text-white">{question}</p>
+      <p className="mt-1 text-xs text-slate-300">{answer}</p>
     </div>
   );
 }
